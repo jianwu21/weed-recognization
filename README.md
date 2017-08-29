@@ -1,5 +1,9 @@
-# Weed Recognization
+Weed Recognization
+==================
+
 This is the free topic for 2017-2018 block 1.
+
+-----
 
 ## Python for Linux
 There are some problems with python in Linux environment. So please remember to set virtual environment or virtual machine in Linux.
