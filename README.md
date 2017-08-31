@@ -18,8 +18,10 @@ For each image, we divide it to several small pictures.Then we identify these pi
 <img src="./example_Img/IMG_7347_fn_07_13_ttc_uw.png" width="200" height="200">
 <img src="./example_Img/IMG_7347_fn_07_13_ttc_uw_surround.png" width="200" height="200">
 
-Python for Linux
-----------------
+Before start
+------------
+
+### python for Linux
 
 There are some problems with python in Linux environment. So please remember to set virtual environment or virtual machine in Linux.I use [virtualenv](https://virtualenv.pypa.io/en/stable/)
 ```shell
@@ -27,6 +29,24 @@ virtualenv env
 source env/bin/activate
 ```
 
-[CNN](http://www.pyimagesearch.com/2016/08/01/lenet-convolutional-neural-network-in-python/)
---------------------------------------------------------------------------------------------
+### [CNN](http://www.pyimagesearch.com/2016/08/01/lenet-convolutional-neural-network-in-python/)
 CNN is so hot now.It made something easier.Instead of old school image processing method,cnn seems a better for us to do area recognition.
+
+Preprocess for images
+---------------------
+
+- Color normalization
+- Images normalization
+- Remove the edge with value 0
+
+### Color normalization
+
+Since our pictures are taken from different weather and different angle. So the light may have some influence in the CNN training. It will smart to preprocess pictures before the training
+
+### Image normalization
+
+The same with above? Not sure, will write later
+
+### Remove the edges with value 0
+
+It is necessary to remove these small parts. 
