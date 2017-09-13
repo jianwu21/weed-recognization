@@ -8,7 +8,7 @@ This is the free topic for 2017-2018 block 1.
 Database description
 --------------------
 
-The database include two kinds of crops,barley and wheat.For each group,we got the images from 5 attitutes,10m,20m,30,50m.   
+The database include two kinds of crops,barley and wheat.For each group,we got theimages from 5 attitutes,10m,20m,30,50m.   
 <img src="./example_Img/IMG_7347.JPG" title="Barley 10m" width="200" height="200"/>
 <img src="./example_Img/IMG_7317.JPG" title="Barley 20m" width="200" height="200"/> 
 <img src="./example_Img/IMG_7278.JPG" title="Barley 30m" width="200" height="200"/>
@@ -41,12 +41,14 @@ Preprocess for images
 
 ### Color normalization
 
-Since our pictures are taken from different weather and different angle. So the light may have some influence in the CNN training. It will smart to preprocess pictures before the training
+Since our pictures are taken from different weather and different angle. So the light may have some influence in the CNN training. It will smart to preprocess pictures before the training, 
 
 ### Image normalization
 
-The same with above? Not sure, will write later
+Make all images including traing set and testing set be in the same scale
 
 ### Remove the edges with value 0
 
-It is necessary to remove these small parts. 
+It is necessary to remove these small parts. I think the pixel with value 0 may have bad influence on classifier training. If we remove the pixels which are 0, the accurance will increase. Not sure now. Will experiment!!!
+
+<img src="./example_Img/IMG_7347_fn_07_13_ttc_uw_surround.png" width="200" height="200">
