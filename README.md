@@ -1,7 +1,7 @@
 Weed Recognization
 ==================
 
-This is the free topic for 2017-2018 block 1.
+This is the free topic for 2017-2018 block 1. You can see all [experiments](https://github.com/JaggerWu/weed-recognization/blob/master/weed%20recognization.ipynb) run by me in a jupyter notebook file.
 
 -----
 
@@ -20,6 +20,14 @@ For each image, we divide it to several small pictures.Then we identify these pi
 
 Before start
 ------------
+### Data Generation
+
+All imges are in ``.JPG`` format. It will take sometime for `python` to load it. 
+There is one script for data generation. All image will be stored in one `.db` file with both of RGB and HSV space. Then it will be convinient and fast for us to extract the matrix of images, which can be helpful to improve experiment speed.
+
+```shell
+python -m generate_data.py
+```
 
 ### python for Linux
 
