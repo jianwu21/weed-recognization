@@ -43,7 +43,9 @@ Preprocess for images
 
 ### Color normalization
 
-Since our pictures are taken from different weather and different angle. So the light may have some influence in the CNN training. It will smart to preprocess pictures before the training, 
+Since our pictures are taken from different weather and different angle. So the light may have significant influence in the images for training and test. Converting it from RGB space to HSV space is a good idea for the origin images to be normalized. Because [HSV/HSL](https://en.wikipedia.org/wiki/HSL_and_HSV)(Hue, Saturation, Value/Lightness) space can express the relationship with light directly.   
+
+For the **Color Normaliztion**, I don't think it is neccesary to normalize H, S, V. We just want to decrease the influence of light. So may we should use the average of L for every pixel. Or just use the H and S for training.
 
 ### Image normalization
 
@@ -54,3 +56,9 @@ Make all images including traing set and testing set be in the same scale
 It is necessary to remove these small parts. I think the pixel with value 0 may have bad influence on classifier training. If we remove the pixels which are 0, the accurance will increase. Not sure now. Will experiment!!!
 
 <img src="./example_Img/IMG_7347_fn_07_13_ttc_uw_surround.png" width="200" height="200">
+
+Data Training
+-------------
+
+Single layer CNN????? Will come later.
+
