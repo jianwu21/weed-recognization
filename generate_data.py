@@ -1,8 +1,4 @@
 import cv2
-import json
-import numpy as np
-import matplotlib.pyplot as plt
-from os import path, listdir
 import pickle
 import re
 import sqlite3 as sqlite
@@ -31,7 +27,7 @@ def main():
         )
         con.commit()
         print('Inserting img: {}'.format(img_id))
-        
+
 
     con.close()
 
