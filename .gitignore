@@ -102,3 +102,6 @@ ENV/
 
 # data folder
 Thistles/
+
+# .db file
+*.db
