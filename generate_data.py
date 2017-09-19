@@ -15,12 +15,13 @@ def main():
     c.execute('create table img(im_id, rgb, hsv)')
     print('table has been created')
 
+    # import the images data
     for orig_name in orig_list:
         img_id = re.split('\.|_', orig_name)[1]
         img_rgb = plt.imread(
             path.join('Thistles/jer_2016jan13n15/barley_10m/orig', orig_name))
         img_hsv = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2HSV)
-        
+
         c.execute(
             'insert into img(im_id, rgb, hsv) values(?, ?, ?)',
             (img_id, pickle.dumps(img_rgb), pickle.dumps(img_hsv))

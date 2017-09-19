@@ -55,6 +55,8 @@ Since our pictures are taken from different weather and different angle. So the 
 
 For the **Color Normaliztion**, I don't think it is neccesary to normalize H, S, V. We just want to decrease the influence of light. So may we should use the average of L for every pixel. Or just use the H and S for training.
 
+*Issue*: Should I do normalization for H, S and V, or just V. Or ignore the L
+
 ### Image normalization
 
 Make all images including traing set and testing set be in the same scale
