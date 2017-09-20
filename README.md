@@ -65,6 +65,8 @@ Make all images including traing set and testing set be in the same scale
 
 It is necessary to remove these small parts. I think the pixel with value 0 may have bad influence on classifier training. If we remove the pixels which are 0, the accurance will increase. Not sure now. Will experiment!!!
 
+The **issue** is if we should removw these ones for just use these pixels which are not value of 0 for training.
+
 <img src="./example_Img/IMG_7347_fn_07_13_ttc_uw_surround.png" width="200" height="200">
 
 Data Training
