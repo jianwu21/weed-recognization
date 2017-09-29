@@ -55,7 +55,8 @@ Since our pictures are taken from different weather and different angle. So the 
 
 Here, the effect is concentrated both in the saturation component and the value component, whereas the hue component is hardly affected.We choose to correct both saturation $S$ and value $V$ using a linerar fit to each image, i.e:
 
-$$ S(x, y) \frac{\overline(S)}{a_s+b_sx+c_sy}S(x, y)$$
+![equation](http://latex.codecogs.com/gif.latex?S(x, y)\frac{\overline(S)}{a_s+b_sx+c_sy}S(x, y))
+
 
 ### Image normalization
 
