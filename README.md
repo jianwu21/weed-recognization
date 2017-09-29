@@ -53,9 +53,9 @@ Preprocess for images
 
 Since our pictures are taken from different weather and different angle. So the light may have significant influence in the images for training and test. Converting it from RGB space to HSV space is a good idea for the origin images to be normalized. Because [HSV/HSL](https://en.wikipedia.org/wiki/HSL_and_HSV)(Hue, Saturation, Value/Lightness) space can express the relationship with light directly.   
 
-For the **Color Normaliztion**, I don't think it is neccesary to normalize H, S, V. We just want to decrease the influence of light. So may we should use the average of L for every pixel. Or just use the H and S for training.
+Here, the effect is concentrated both in the saturation component and the value component, whereas the hue component is hardly affected.We choose to correct both saturation $S$ and value $V$ using a linerar fit to each image, i.e:
 
-*Issue*: Should I do normalization for H, S and V, or just V. Or ignore the L
+$$ S(x, y) \frac{\overline(S)}{a_s+b_sx+c_sy}S(x, y)$$
 
 ### Image normalization
 
