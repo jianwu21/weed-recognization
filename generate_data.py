@@ -1,7 +1,13 @@
 import cv2
+import matplotlib.pyplot as plt
+from os import (
+    listdir,
+    path,
+)
 import pickle
 import re
 import sqlite3 as sqlite
+
 
 def main():
     dirpath = path.dirname(path.abspath('__file__'))
@@ -28,7 +34,6 @@ def main():
         )
         con.commit()
         print('Inserting img: {}'.format(img_id))
-
 
     con.close()
 
