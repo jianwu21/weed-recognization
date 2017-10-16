@@ -5,35 +5,52 @@ from os import (
     path,
 )
 import pickle
-import re
 import sqlite3 as sqlite
 
 
 def main():
     dirpath = path.dirname(path.abspath('__file__'))
-    orig_list = listdir(
-        path.join(dirpath, 'Thistles/jer_2016jan13n15/barley_10m/orig/'))
+    img_list = listdir(
+        path.join(
+            dirpath,
+            'Thistles/jer_2016jan13n15/barley_30m/output_barley_30m/'))
 
     # build one connection to db file
-    con = sqlite.connect('barley_10m.db')
+    con = sqlite.connect('barley_30m.db')
     c = con.cursor()
     print('creating table...')
-    c.execute('create table img(im_id, rgb, hsv)')
+    c.execute(
+        '''
+        create table img(
+            id INTEGER PRIMARY KEY AUTOINCREMENT not null,
+            rgb,
+            hsv,
+            label
+        );
+        '''
+    )
     print('table has been created')
 
     # import the images data
-    for orig_name in orig_list:
-        img_id = re.split('\.|_', orig_name)[1]
-        img_rgb = plt.imread(
-            path.join('Thistles/jer_2016jan13n15/barley_10m/orig', orig_name))
-        img_hsv = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2HSV)
+    for img_name in img_list:
+        if not 'surround' in img_name:
+            rgb = plt.imread(
+                path.join(
+                    'Thistles/jer_2016jan13n15/barley_30m/output_barley_30m/',
+                    img_name
+                )).astype('float32')
+            hsv = cv2.cvtColor(rgb,cv2.COLOR_BGR2HSV)
+            if 'uc' in img_name:
+                label = 1
+            else:
+                label = 0
 
-        c.execute(
-            'insert into img(im_id, rgb, hsv) values(?, ?, ?)',
-            (img_id, pickle.dumps(img_rgb), pickle.dumps(img_hsv))
-        )
+            c.execute(
+                'insert into img(rgb, hsv, label) values(?, ?, ?)',
+                (pickle.dumps(rgb), pickle.dumps(hsv), label)
+            )
+            print('Inserting img: {}'.format(img_name))
         con.commit()
-        print('Inserting img: {}'.format(img_id))
 
     con.close()
 
