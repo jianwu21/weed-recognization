@@ -1,3 +1,5 @@
+from __future__ import division
+
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -24,3 +26,22 @@ def corlor_normalization(img):
             img_hsv[x, y, 2] = (img[x, y, 2]-mean_v)/std_v
 
     return img_hsv
+
+
+def cut_patches(img):
+    '''
+    The return value is a dictionary, the key is (x, y) in
+    orgin img, the values is np.array.
+    '''
+    l, w, d = img.shape
+
+    num_l = l/100
+    num_w = w/100
+
+    map_imgs = {}
+
+    for i in range(num_l):
+        for j in range(num_w):
+            map_imgs.update({(i, j): img[100*i:100*(i+1), 100*j:100*(j+1)]})
+
+    return map_imgs
