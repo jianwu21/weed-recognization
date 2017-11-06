@@ -74,7 +74,7 @@ python generate_data.py
 After doing that, now we can start training. The classical method for model selection is that we train one classifier based on each randomly picked training images group. Then we pick the best one. Now, since the limit for the time and hardware, I just train one classifier. I will update the amount of training group based on one improved CNN after talking with Francois.
 
 ### Test
-For the test, we want to use classifier in one entire picture. Firstly, the size of one original images is **3000*4000**. So we should divide the testing original picture to **30*40** batches, every batch's size is **100*100**. Then label them depending on selected best model.
+For the test, we want to use classifier in one entire picture. Firstly, the size of one original images is **3000 4000**. So we should divide the testing original picture to **30*40** batches, every batch's size is **100*100**. Then label them depending on selected best model.
 
 CNN structure
 -------------
