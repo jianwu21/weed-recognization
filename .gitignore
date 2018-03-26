@@ -107,3 +107,7 @@ Thistles/
 *.db
 
 *.swo
+
+*.pyc
+*.swp
+checkpoint
