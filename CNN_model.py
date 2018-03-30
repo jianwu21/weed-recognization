@@ -121,7 +121,7 @@ def build_model():
     model.add(Dropout(dropout))
 
     model.add(Flatten())
-    model.add(Dense(51)
+    model.add(Dense(51))
     model.add(Activation('relu'))
     model.add(Dropout(0.5))
     model.add(Dense(num_classes))
@@ -155,94 +155,34 @@ if __name__ == '__main__':
         rgb, label = c.execute('select rgb, label from img where id=%s' % i).fetchone()
         img_train.append(pickle.loads(rgb))
         if label == 1:
-            label_train.append([1])
+            label_train.append(1)
         else:
-            label_train.append([0])
+            label_train.append(0)
 
-    x_tr = np.array(img_train)
-    y_tr = np.array(label_train)
+    x_train = np.array(img_train)
+    y_train = np.array(label_train)
 
     for i in id_validation:
         rgb, label = c.execute('select rgb,label from img where id=%s'
                                %i).fetchone()
         img_val.append(pickle.loads(rgb))
         if label == 1:
-            label_val.append([1])
+            label_val.append(1)
         else:
-            label.val.append([0])
+            label_val.append(0)
 
-    x_val = np.a
+    x_val = np.array(img_val)
+    y_val = np.array(label_val)
 
 
-    # load the pickle file
-    train_dict = pickle.load(open('./train.pickle', 'rb'))
-    test_dict = pickle.load(open('./test.pickle', 'rb'))
-    label_dict = pickle.load(open('./label_dict.pickle', 'rb'))
-
-    num_classes = len(set(train_dict.values()))
-
-    print('Totally {} classes'.format(num_classes))
-
-    all_training_ims = train_dict.keys()
-    all_testing_ims = test_dict.keys()
-    validation_ims = np.random.choice(
-        all_training_ims, len(all_training_ims)//5, replace=False)
-
-    # load data
-    x_train = []
-    y_train = []
-
-    x_val = []
-    y_val = []
-
-    # set image target size here
-    target_size = (100, 100)
-
-    # Using all the data for training.
-    for im_id in all_training_ims:
-        try:
-            im = img_to_array(
-                img=load_img(
-                    './process_train/' + im_id + '.jpg',
-                    target_size=target_size,
-                )
-            )
-            if im_id in validation_ims:
-                x_val.append(im)
-                y_val.append(label_dict[train_dict[im_id]])
-            else:
-                x_train.append(im)
-                y_train.append(label_dict[train_dict[im_id]])
-        except IOError:
-            # ignore the issue when loading the bad images
-            continue
-
-    x_test = []
-    y_test = []
-
-    for im_id in all_testing_ims:
-        try:
-            im = img_to_array(
-                img=load_img(
-                    './process_test/' + im_id + '.jpg',
-                    target_size=target_size,
-                )
-            )
-            x_test.append(im)
-            y_test.append(label_dict[test_dict[im_id]])
-        except IOError:
-            # ignore the issue when loading the bad images
-            continue
-
-    print('{} samples will be trained'.format(len(y_train)))
-
-    x_train = np.array(x_train)
-    x_val = np.array(x_val)
-    x_test = np.array(x_test)
+    num_classes = len(set(y_train))
 
     y_train = keras.utils.to_categorical(y_train, num_classes)
     y_val = keras.utils.to_categorical(y_val, num_classes)
-    y_test = keras.utils.to_categorical(y_test, num_classes)
+
+    print('Totally {} classes'.format(num_classes))
+
+    print('{} samples will be trained'.format(len(y_train)))
 
     # build network
     model = build_model()
