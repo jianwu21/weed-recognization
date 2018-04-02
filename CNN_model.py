@@ -22,8 +22,8 @@ from keras.callbacks import LearningRateScheduler, TensorBoard
 from keras.layers.normalization import BatchNormalization
 from keras.utils import plot_model
 
-batch_size    = 100
-epochs        = 100
+batch_size    = 200
+epochs        = 10
 iterations    = 100
 dropout       = 0.25
 weight_decay  = 0.0001
@@ -82,46 +82,28 @@ def build_model():
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2,2), padding = 'same'))
 
-    model.add(
-        Conv2D(
-            256,
-            (3, 3),
-            padding='same',
-            kernel_regularizer=keras.regularizers.l2(weight_decay),
-            kernel_initializer="he_normal"))
-    model.add(Activation('relu'))
-    model.add(
-        Conv2D(
-            256,
-            (3, 3),
-            padding='same',
-            kernel_regularizer=keras.regularizers.l2(weight_decay),
-            kernel_initializer="he_normal"))
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2,2), padding = 'same'))
-
-    model.add(
-        Conv2D(
-            512,
-            (3, 3),
-            padding='same',
-            kernel_regularizer=keras.regularizers.l2(weight_decay),
-            kernel_initializer="he_normal"))
-    model.add(Activation('relu'))
-    model.add(
-        Conv2D(
-            512,
-            (3, 3),
-            padding='same',
-            kernel_regularizer=keras.regularizers.l2(weight_decay),
-            kernel_initializer="he_normal"))
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2,2), padding = 'same'))
+   #model.add(
+   #    Conv2D(
+   #        256,
+   #        (3, 3),
+   #        padding='same',
+   #        kernel_regularizer=keras.regularizers.l2(weight_decay),
+   #        kernel_initializer="he_normal"))
+   #model.add(Activation('relu'))
+   #model.add(
+   #    Conv2D(
+   #        256,
+   #        (3, 3),
+   #        padding='same',
+   #        kernel_regularizer=keras.regularizers.l2(weight_decay),
+   #        kernel_initializer="he_normal"))
+   #model.add(Activation('relu'))
+   #model.add(MaxPooling2D(pool_size=(2, 2), strides=(2,2), padding = 'same'))
 
     model.add(Dropout(dropout))
 
     model.add(Flatten())
-    model.add(Dense(51))
+    model.add(Dense(10))
     model.add(Activation('relu'))
     model.add(Dropout(0.5))
     model.add(Dense(num_classes))
@@ -143,7 +125,7 @@ if __name__ == '__main__':
     c = con.cursor()
 
     ids = [i for i, in c.execute('select id from img').fetchall()]
-    id_train = np.random.choice(ids, size=50)
+    id_train = np.random.choice(ids, size=2000)
     id_validation = [i for i in ids if i not in id_train]
 
     img_train = []
