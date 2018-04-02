@@ -12,7 +12,6 @@ The database include two kinds of crops,barley and wheat.For each group,we got t
 <img src="./example_Img/IMG_7347.JPG" title="Barley 10m" width="200" height="200"/>
 <img src="./example_Img/IMG_7317.JPG" title="Barley 20m" width="200" height="200"/>
 <img src="./example_Img/IMG_7278.JPG" title="Barley 30m" width="200" height="200"/>
-<img src="./example_Img/IMG_7291.JPG" title="Barley 50m" width="200" height="200"/>
 
 For each image, we divide it to several small pictures(100*100).Then we identify these pictures as weed one or crop one by using classical image processing method. Then, we use the tiny pictures as training data.
 <img src="./example_Img/IMG_7347_fn_07_13_ttc_uw.png" width="200" height="200">
@@ -25,7 +24,7 @@ All imges are in ``.JPG`` format. It will take sometime for `python` to load it.
 There is one script for data generation. All image will be stored in one `.db` file with both of RGB and HSV space. Then it will be convinient and fast for us to extract the matrix of images, which can be helpful to improve experiment speed.
 
 ```shell
-python -m generate_data.py
+python generate_data.py
 ```
 
 ### python for Linux
@@ -81,14 +80,39 @@ CNN structure
 
 I use the simplest structure for CNN. Since the limit for hardware and time, I just use 50 images for training, but the accuracy is not good. You can see the result from the [notebook](https://github.com/JaggerWu/weed-recognization/blob/master/weed%20recognization.ipynb). The result is not good.
 
-- conv layer 1
-- conv layer 2
-- full-conected layer 1
-- softmax layer
-
-The nest steps
---------------
-
-- Improve the model(add some preprocess for images, like rotation, changes in HSV channel, optimize in iterations).
-- Visualization after each convolution layer
-- ?????
+```
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_1 (Conv2D)            (None, 100, 100, 64)      1792      
+_________________________________________________________________
+activation_1 (Activation)    (None, 100, 100, 64)      0         
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 50, 50, 64)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 50, 50, 128)       73856     
+_________________________________________________________________
+activation_2 (Activation)    (None, 50, 50, 128)       0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 50, 50, 128)       147584    
+_________________________________________________________________
+activation_3 (Activation)    (None, 50, 50, 128)       0         
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 25, 25, 128)       0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 25, 25, 128)       0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 80000)             0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 10)                800010    
+_________________________________________________________________
+activation_4 (Activation)    (None, 10)                0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 10)                0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 2)                 22        
+_________________________________________________________________
+activation_5 (Activation)    (None, 2)                 0         
+=================================================================
+Total params: 1,023,264
+Trainable params: 1,023,264
+```
