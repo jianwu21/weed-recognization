@@ -124,8 +124,9 @@ if __name__ == '__main__':
     con = sqlite.connect('barley_30m.db')
     c = con.cursor()
 
+    training_size = 3000
     ids = [i for i, in c.execute('select id from img').fetchall()]
-    id_train = np.random.choice(ids, size=2000)
+    id_train = np.random.choice(ids, size=training_size)
     id_validation = [i for i in ids if i not in id_train]
 
     img_train = []
