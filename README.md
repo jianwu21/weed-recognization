@@ -14,7 +14,7 @@ The database include two kinds of crops,barley and wheat.For each group,we got t
 <img src="./example_Img/IMG_7278.JPG" title="Barley 30m" width="200" height="200"/>
 
 For each image, we divide it to several small pictures(100*100).Then we identify these pictures as weed one or crop one by using classical image processing method. Then, we use the tiny pictures as training data.
-<img src="./example_Img/IMG_7347_fn_07_13_ttc_uw.png" width="200" height="200">
+<img src="./example_Img/IMG_7347_fn_07_13_ttc_uw.png" width="200" height="200"/>
 
 Before start
 ------------
@@ -78,8 +78,7 @@ For the test, we want to use classifier in one entire picture. Firstly, the size
 CNN structure
 -------------
 
-I use the simplest structure for CNN. Since the limit for hardware and time, I just use 50 images for training, but the accuracy is not good. You can see the result from the [notebook](https://github.com/JaggerWu/weed-recognization/blob/master/weed%20recognization.ipynb). The result is not good.
-
+Run `python CNN_mmodel.py` to build CNN model. The specific info is displayed below.
 ```
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -116,3 +115,8 @@ activation_5 (Activation)    (None, 2)                 0
 Total params: 1,023,264
 Trainable params: 1,023,264
 ```
+
+model review
+------------
+
+You can check how the model work in [notebook](https://github.com/JaggerWu/weed-recognization/blob/master/model_result.ipynb)
