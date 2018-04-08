@@ -1,7 +1,7 @@
 Weed Recognization
 ==================
 
-This is the free topic for 2017-2018 block 1. You can see all [experiments](https://github.com/JaggerWu/weed-recognization/blob/master/weed%20recognization.ipynb) run by me in a jupyter notebook file.
+This is the free topic for 2017-2018 block 1. You can see all [experiments](https://github.com/JaggerWu/weed-recognization/blob/master/model_result.ipynb) run by me in a jupyter notebook file.
 
 -----
 
@@ -13,7 +13,7 @@ The database include two kinds of crops,barley and wheat.For each group,we got t
 <img src="./example_Img/IMG_7317.JPG" title="Barley 20m" width="200" height="200"/>
 <img src="./example_Img/IMG_7278.JPG" title="Barley 30m" width="200" height="200"/>
 
-For each image, we divide it to several small pictures(100*100).Then we identify these pictures as weed one or crop one by using classical image processing method. Then, we use the tiny pictures as training data.
+For each image, we divide it to several small pictures(100, 100).Then we identify these pictures as weed one or crop one by using classical image processing method. Then, we use the tiny pictures as training data.
 <img src="./example_Img/IMG_7347_fn_07_13_ttc_uw.png" width="200" height="200"/>
 
 Before start
@@ -114,6 +114,14 @@ activation_5 (Activation)    (None, 2)                 0
 =================================================================
 Total params: 1,023,264
 Trainable params: 1,023,264
+```
+
+Logs of training
+----------------
+
+I use tensorfolw to record the logs during model training. So you can also check that by using 
+```
+tensorboard --logdir=./logs
 ```
 
 model review
