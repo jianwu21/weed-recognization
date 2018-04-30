@@ -40,6 +40,8 @@ For preprocess our images, I choose [OpenCV](http://opencv.org/)
 ### [CNN](http://www.pyimagesearch.com/2016/08/01/lenet-convolutional-neural-network-in-python/)
 CNN is so hot now.It made something easier.Instead of old school image processing method,cnn seems a better for us to do area recognition.
 
+For CNN model building,. I  chose [Keras](https://keras.io/).
+
 Preprocess for images
 ---------------------
 
