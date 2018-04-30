@@ -135,3 +135,4 @@ Final Report
 ------------
 
 You can read the [final report](https://github.com/JaggerWu/weed-recognization/blob/master/weed-detection.pdf) for more details.
+You can also [download](https://github.com/JaggerWu/weed-recognization/raw/master/weed-detection.pdf) it if you can not read it online.
