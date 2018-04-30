@@ -128,3 +128,8 @@ model review
 ------------
 
 You can check how the model work in [notebook](https://github.com/JaggerWu/weed-recognization/blob/master/model_result.ipynb)
+
+Final Report
+------------
+
+You can read the [final report](https://github.com/JaggerWu/weed-recognization/blob/master/weed-detection.pdf) for more details.
